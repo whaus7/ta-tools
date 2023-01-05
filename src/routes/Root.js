@@ -32,7 +32,7 @@ export default function Root() {
                 justifyContent: "space-between",
               }}
             >
-              <Menu defaultSelectedKeys={[page]} mode="horizontal">
+              <Menu defaultSelectedKeys={[page]} mode="vertical">
                 <Menu.Item key="/price">
                   <BarChartOutlined />
                   <span>Price</span>
