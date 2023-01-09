@@ -8,6 +8,7 @@ import "./index.css";
 import Root from "./routes/Root";
 import Price from "./routes/Price";
 import Klines from "./routes/Klines";
+import AggTrades from "./routes/AggTrades";
 import Whoops from "./Whoops";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -18,30 +19,30 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <Whoops />,
     children: [
-      {
-        path: "/price",
-        element: <Price />,
-        loader: async () => {
-          const response = await fetch(
-            "https://api.binance.com/api/v3/avgPrice?symbol=XRPUSDT"
-          );
-          const json = await response.json();
-          return json.price;
-        },
-      },
+      // {
+      //   path: "/price",
+      //   element: <Price />,
+      //   loader: async () => {
+      //     const response = await fetch(
+      //       "https://api.binance.com/api/v3/avgPrice?symbol=XRPUSDT"
+      //     );
+      //     const json = await response.json();
+      //     return json.price;
+      //   },
+      // },
       {
         path: "/klines",
         element: <Klines />,
+      },
+      {
+        path: "/aggtrades",
+        element: <AggTrades />,
       },
     ],
   },
 ]);
 
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+root.render(<RouterProvider router={router} />);
 
 // root.render(
 //   <React.StrictMode>

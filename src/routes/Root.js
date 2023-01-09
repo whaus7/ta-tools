@@ -3,6 +3,7 @@ import { RecoilRoot } from "recoil";
 import { Outlet, Link } from "react-router-dom";
 import { BulbOutlined, BarChartOutlined } from "@ant-design/icons";
 import { ConfigProvider, theme, Layout, Space, Menu, Typography } from "antd";
+import Price from "./Price";
 const { Header, Content, Footer, Sider } = Layout;
 const { Title } = Typography;
 
@@ -21,20 +22,21 @@ export default function Root() {
                 TA Haus
               </Title>
             </div>
-            <Menu
-              defaultSelectedKeys={[page]}
-              mode="vertical"
-              style={{ borderInlineEnd: "none" }}
-            >
-              <Menu.Item key="/price">
+            <Menu defaultSelectedKeys={[page]} mode="vertical" style={{ borderInlineEnd: "none" }}>
+              {/* <Menu.Item key="/price">
                 <BarChartOutlined />
                 <span>Price</span>
                 <Link to={`price`} />
-              </Menu.Item>
+              </Menu.Item> */}
               <Menu.Item key="/klines">
                 <BarChartOutlined />
                 <span>Klines</span>
                 <Link to={`klines`} />
+              </Menu.Item>
+              <Menu.Item key="/aggtrades">
+                <BarChartOutlined />
+                <span>Recent Trades</span>
+                <Link to={`aggtrades`} />
               </Menu.Item>
             </Menu>
           </Sider>
@@ -43,8 +45,7 @@ export default function Root() {
               style={{
                 display: "flex",
                 marginBottom: 16,
-                background:
-                  themeToggle === "darkAlgorithm" ? "#001529" : "#ebebeb",
+                background: themeToggle === "darkAlgorithm" ? "#001529" : "#ebebeb",
               }}
             >
               {/* <Menu theme={themeToggle === 'darkAlgorithm' ? 'dark' : 'light'}  */}
@@ -55,15 +56,13 @@ export default function Root() {
                   justifyContent: "space-between",
                 }}
               >
-                <div>&nbsp;</div>
+                <div>
+                  <Price />
+                </div>
                 <div>
                   <a
                     onClick={() => {
-                      setThemeToggle(
-                        themeToggle === "defaultAlgorithm"
-                          ? "darkAlgorithm"
-                          : "defaultAlgorithm"
-                      );
+                      setThemeToggle(themeToggle === "defaultAlgorithm" ? "darkAlgorithm" : "defaultAlgorithm");
                     }}
                     href="#"
                   >
@@ -74,18 +73,12 @@ export default function Root() {
             </Header>
             <Content style={{ padding: "0 16px" }}>
               <div className="site-layout-content">
-                <Space
-                  direction="vertical"
-                  size="middle"
-                  style={{ display: "flex" }}
-                >
+                <Space direction="vertical" size="middle" style={{ display: "flex" }}>
                   <Outlet />
                 </Space>
               </div>
             </Content>
-            <Footer style={{ textAlign: "center" }}>
-              Trading Haus Tools ©{today.getFullYear()}
-            </Footer>
+            <Footer style={{ textAlign: "center" }}>Trading Haus Tools ©{today.getFullYear()}</Footer>
           </Layout>
         </Layout>
       </ConfigProvider>
