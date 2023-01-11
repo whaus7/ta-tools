@@ -10,6 +10,7 @@ import Price from "./routes/Price";
 import Klines from "./routes/Klines";
 import AggTrades from "./routes/AggTrades";
 import Whoops from "./Whoops";
+import OrderBook from "./routes/OrderBook";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -19,17 +20,17 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <Whoops />,
     children: [
-      // {
-      //   path: "/price",
-      //   element: <Price />,
-      //   loader: async () => {
-      //     const response = await fetch(
-      //       "https://api.binance.com/api/v3/avgPrice?symbol=XRPUSDT"
-      //     );
-      //     const json = await response.json();
-      //     return json.price;
-      //   },
-      // },
+      {
+        path: "/order_book",
+        element: <OrderBook />,
+        // loader: async () => {
+        //   const response = await fetch(
+        //     "https://api.binance.com/api/v3/avgPrice?symbol=XRPUSDT"
+        //   );
+        //   const json = await response.json();
+        //   return json.price;
+        // },
+      },
       {
         path: "/klines",
         element: <Klines />,

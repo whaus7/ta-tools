@@ -23,11 +23,11 @@ export default function Root() {
               </Title>
             </div>
             <Menu defaultSelectedKeys={[page]} mode="vertical" style={{ borderInlineEnd: "none" }}>
-              {/* <Menu.Item key="/price">
+              <Menu.Item key="/order_book">
                 <BarChartOutlined />
-                <span>Price</span>
-                <Link to={`price`} />
-              </Menu.Item> */}
+                <span>Order Book</span>
+                <Link to={`order_book`} />
+              </Menu.Item>
               <Menu.Item key="/klines">
                 <BarChartOutlined />
                 <span>Klines</span>

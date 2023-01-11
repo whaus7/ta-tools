@@ -29,3 +29,13 @@ code {
   flex-direction: column;
   justify-content: center;
 }
+
+.reverseList {
+  flex-direction: column-reverse;
+  display: flex;
+}
+
+.spaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
