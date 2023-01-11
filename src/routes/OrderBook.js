@@ -8,25 +8,25 @@ export default function OrderBook() {
   const [data, setData] = useRecoilState(aggTradesState);
   //const trades = useRecoilValue(aggTradesState);
 
-  useEffect(() => {
-    // Create WebSocket connection.
-    const socket = new WebSocket("wss://stream.binance.com:9443/ws/xrpusdt@aggTrade");
-    console.log("socket");
-    console.log(socket);
+  //   useEffect(() => {
+  //     // Create WebSocket connection.
+  //     const socket = new WebSocket("wss://stream.binance.com:9443/ws/xrpusdt@aggTrade");
+  //     console.log("socket");
+  //     console.log(socket);
 
-    // Listen for messages
-    socket.addEventListener("message", (event) => {
-      setData((d) => {
-        if (d.length > 10) {
-          let temp = d.map((x) => x);
-          temp.shift();
-          return [...temp, JSON.parse(event.data)];
-        } else {
-          return [...d, JSON.parse(event.data)];
-        }
-      });
-    });
-  }, []);
+  //     // Listen for messages
+  //     socket.addEventListener("message", (event) => {
+  //       setData((d) => {
+  //         if (d.length > 10) {
+  //           let temp = d.map((x) => x);
+  //           temp.shift();
+  //           return [...temp, JSON.parse(event.data)];
+  //         } else {
+  //           return [...d, JSON.parse(event.data)];
+  //         }
+  //       });
+  //     });
+  //   }, []);
 
   return (
     <Card title="Order Book">

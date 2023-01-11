@@ -95,7 +95,6 @@ export default function AggTrades() {
       >
         <ResponsiveContainer width="100%" height={300}>
           <BarChart
-            isAnimationActive={false}
             data={trades}
             margin={{
               top: 5,
@@ -117,7 +116,7 @@ export default function AggTrades() {
               }}
             />
             <Legend />
-            <Bar stackId="a" dataKey="size">
+            <Bar stackId="a" dataKey="size" isAnimationActive={false}>
               {trades.map((d, i) => {
                 return <Cell fill={`rgb(${d.color}, ${d.maker ? 1 : 0.3})`} key={`bar${i}`} />;
               })}

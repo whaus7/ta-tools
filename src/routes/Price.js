@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 
 import { aggTradesState } from "../store";
 
-const MAX_HISTORY = 50;
+const MAX_HISTORY = 100;
 
 export default function Price() {
   const [data, setData] = useRecoilState(aggTradesState);
