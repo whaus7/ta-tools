@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.btn:hover {
+  cursor: pointer;
+}
+
 .logo {
   display: flex;
   justify-content: center;
@@ -38,4 +42,8 @@ code {
 .spaceBetween {
   display: flex;
   justify-content: space-between;
+}
+
+.verticalAlign {
+  align-self: center;
 }

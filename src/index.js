@@ -1,16 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RecoilRoot, useRecoilState } from "recoil";
 import "./index.css";
-//import App from './App';
 //import reportWebVitals from "./reportWebVitals";
-
-import Root from "./routes/Root";
-import Price from "./routes/Price";
-import Klines from "./routes/Klines";
-import AggTrades from "./routes/AggTrades";
+import Root from "./routes/root";
+import Klines from "./routes/klines";
+import AggTrades from "./routes/aggTrades";
 import Whoops from "./Whoops";
-import OrderBook from "./routes/OrderBook";
+import OrderBook from "./routes/orderBook";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -43,7 +41,11 @@ const router = createBrowserRouter([
   },
 ]);
 
-root.render(<RouterProvider router={router} />);
+root.render(
+  <RecoilRoot>
+    <RouterProvider router={router} />
+  </RecoilRoot>
+);
 
 // root.render(
 //   <React.StrictMode>
