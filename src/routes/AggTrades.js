@@ -54,7 +54,7 @@ export default function AggTrades() {
             {trades.length ? (
               <div style={{ display: "flex" }}>
                 <TopLabel label="Makers" value={makerCounter.toLocaleString("en-US")} />
-                <div style={{ alignSelf: "center" }}>vs</div>
+                <div className="verticalAlign">vs</div>
                 <TopLabel label="Takers" value={takerCounter.toLocaleString("en-US")} />
               </div>
             ) : (
