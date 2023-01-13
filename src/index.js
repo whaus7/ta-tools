@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import { RecoilRoot, useRecoilState } from "recoil";
 import "./index.css";
-import Root from "./routes/Root";
-import ErrorPage from "./Whoops";
-//import reportWebVitals from './reportWebVitals';
-import Price from "./routes/Price";
-import Klines from "./routes/Klines";
+//import reportWebVitals from "./reportWebVitals";
+import Root from "./routes/root";
+import Klines from "./routes/klines";
+import AggTrades from "./routes/aggTrades";
+import Whoops from "./Whoops";
+import OrderBook from "./routes/orderBook";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -16,26 +16,36 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <ErrorPage />,
+    errorElement: <Whoops />,
     children: [
       {
-        path: "price",
-        element: <Price />,
-        loader: async () => {
-          const response = await fetch(
-            "https://api.binance.com/api/v3/avgPrice?symbol=XRPUSDT"
-          );
-          const json = await response.json();
-          return json.price;
-        },
+        path: "/order_book",
+        element: <OrderBook />,
+        // loader: async () => {
+        //   const response = await fetch(
+        //     "https://api.binance.com/api/v3/avgPrice?symbol=XRPUSDT"
+        //   );
+        //   const json = await response.json();
+        //   return json.price;
+        // },
       },
       {
-        path: "klines",
+        path: "/klines",
         element: <Klines />,
+      },
+      {
+        path: "/aggtrades",
+        element: <AggTrades />,
       },
     ],
   },
 ]);
+
+root.render(
+  <RecoilRoot>
+    <RouterProvider router={router} />
+  </RecoilRoot>
+);
 
 // root.render(
 //   <React.StrictMode>
@@ -43,9 +53,7 @@ const router = createBrowserRouter([
 //   </React.StrictMode>
 // );
 
-root.render(<RouterProvider router={router} />);
-
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-//reportWebVitals(console.log);
+//reportWebVitals();
