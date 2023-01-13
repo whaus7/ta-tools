@@ -1,15 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RecoilRoot, useRecoilState } from "recoil";
 import "./index.css";
-//import App from './App';
 //import reportWebVitals from "./reportWebVitals";
-
-import Root from "./routes/Root";
-import Price from "./routes/Price";
-import Klines from "./routes/Klines";
-import AggTrades from "./routes/AggTrades";
+import Root from "./routes/root";
+import Klines from "./routes/klines";
+import AggTrades from "./routes/aggTrades";
 import Whoops from "./Whoops";
+import OrderBook from "./routes/orderBook";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -19,17 +18,17 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <Whoops />,
     children: [
-      // {
-      //   path: "/price",
-      //   element: <Price />,
-      //   loader: async () => {
-      //     const response = await fetch(
-      //       "https://api.binance.com/api/v3/avgPrice?symbol=XRPUSDT"
-      //     );
-      //     const json = await response.json();
-      //     return json.price;
-      //   },
-      // },
+      {
+        path: "/order_book",
+        element: <OrderBook />,
+        // loader: async () => {
+        //   const response = await fetch(
+        //     "https://api.binance.com/api/v3/avgPrice?symbol=XRPUSDT"
+        //   );
+        //   const json = await response.json();
+        //   return json.price;
+        // },
+      },
       {
         path: "/klines",
         element: <Klines />,
@@ -42,7 +41,11 @@ const router = createBrowserRouter([
   },
 ]);
 
-root.render(<RouterProvider router={router} />);
+root.render(
+  <RecoilRoot>
+    <RouterProvider router={router} />
+  </RecoilRoot>
+);
 
 // root.render(
 //   <React.StrictMode>
